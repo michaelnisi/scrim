@@ -1,0 +1,12 @@
+{
+  "name": "imgscraper",
+  "version": "0.0.0",
+  "description": "scrape all imgs from a HTML page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Michael Nisi",
+  "license": "MIT"
+}
