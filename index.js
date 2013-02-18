@@ -1,5 +1,5 @@
 
-// imgscraper - scrape img tags from html page
+// scrimage - scrape img tag src attributes off html page
 
 var trumpet = require('trumpet')
   , tr = trumpet()
@@ -10,8 +10,9 @@ module.exports = function () {
   var stream = new Stream()
 
   function filter (p) {
-    return p.substr(0, 4) === 'http'
-      && (path.extname(p) === '.png' || path.extname(p) === '.jpg')
+    if (!p) return false  
+    var ext = path.extname(p)
+    return p.substr(0, 4) === 'http' && (ext === '.png' || ext === '.jpg')
   }
 
   tr.select('.* img', function (node) {
@@ -20,6 +21,11 @@ module.exports = function () {
     if (filter(src)) {
       stream.emit('data', src)
     }
+  })
+
+  // select the link to the next page on public Google Reader pages 
+  tr.select('#more a', function (node) {
+    stream.emit('end', node.attributes.href)
   })
 
   stream.writable = true
@@ -35,6 +41,7 @@ module.exports = function () {
 
   stream.end = function () {
     tr.end()
+    stream.emit('end')
   }
 
   stream.write = function (chunk) {
