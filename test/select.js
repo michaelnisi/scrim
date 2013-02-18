@@ -1,5 +1,5 @@
 
-// test
+// test scrimage
 
 var scrimage = require('../index.js')
   , es = require('event-stream')
@@ -17,6 +17,9 @@ test('scrape img tags', function (t) {
 
   reader
     .pipe(images)
+    .on('end', function (data) {
+      // TODO: more?
+    })
     .pipe(es.writeArray(function (err, array) {
       t.equal(array.length, wanted.length)
       t.deepEqual(array, wanted)
