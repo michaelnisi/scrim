@@ -10,9 +10,7 @@ module.exports = function () {
   var stream = new Stream()
 
   function filter (p) {
-    if (!p) return false  
-    var ext = path.extname(p)
-    return p.substr(0, 4) === 'http' && (ext === '.png' || ext === '.jpg')
+    return p || false
   }
 
   tr.select('.* img', function (node) {

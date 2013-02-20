@@ -1,7 +1,7 @@
 {
-  "name": "scrimage",
+  "name": "scrimg",
   "version": "0.0.0",
-  "description": "scrape img tag src attributes off html page",
+  "description": "scrape img URLs",
   "main": "index.js",
   "scripts": {
     "test": "tap test/*.js" 
