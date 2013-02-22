@@ -9,6 +9,7 @@ var scrimage = require('../index.js')
 var wanted = [
   'http://img.jpg'
 , 'http://img.png'
+, 'img.jpg'
 ]
 
 test('scrape img tags', function (t) {
