@@ -21,7 +21,7 @@ module.exports = function () {
     }
   })
 
-  // select the link to the next page on public Google Reader pages 
+  // select link to the next page on public Google Reader pages 
   tr.select('#more a', function (node) {
     stream.emit('end', node.attributes.href)
   })
