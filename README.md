@@ -1,8 +1,8 @@
-# scrim - scrape img tag src attributes from HTML page
+# scrim - scrape image URIs from an HTML page
 
 [![Build Status](https://secure.travis-ci.org/michaelnisi/scrim.png?branch=master)](https://travis-ci.org/michaelnisi/scrim)
 
-A through stream to scrape image URIs form a HTML page. You write an HTML page to it and it emits image URIs.
+A through [Stream](http://nodejs.org/docs/latest/api/stream.html) to scrape image URIs from an HTML page. You pipe an HTML formatted string to it, and it emits image URIs.
 
 ## Usage
     
