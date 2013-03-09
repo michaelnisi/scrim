@@ -1,6 +1,3 @@
-
-// scrimage - scrape img tag src attributes off html page
-
 var trumpet = require('trumpet')
   , tr = trumpet()
   , Stream = require('stream').Stream

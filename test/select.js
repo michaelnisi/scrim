@@ -1,14 +1,11 @@
-
-// test scrimmage
-
-var scrimage = require('../index.js')
+var scrim = require('../index.js')
   , es = require('event-stream')
   , fs = require('fs')
   , test = require('tap').test
 
 test('scrape img tags', function (t) {
   var reader = fs.createReadStream('./index.html')
-    , images = scrimage()
+    , images = scrim()
   
   var wanted = [
     'http://img.jpg'
