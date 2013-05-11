@@ -1,18 +1,22 @@
 {
   "name": "scrim",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "scrape image URIs from HTML page",
   "main": "index.js",
   "directories": {
     "example": "example",
     "test": "test"
   },
+  "engines": {
+    "node": "0.10.x"
+  },
   "dependencies": {
     "trumpet": "0.3.x"
   },
   "devDependencies": {
-    "tap": "0.4.x",
-    "event-stream": "3.0.x"
+    "cop": "0.3.x",
+    "hyperquest": "0.1.x",
+    "tap": "0.4.x"
   },
   "scripts": {
     "test": "tap test/*.js"

@@ -1,8 +1,8 @@
 var scrim = require('../index.js')
   , cop = require('cop')
-  , request = require('request')
+  , hyperquest = require('hyperquest')
 
-request('http://npmjs.org')
+hyperquest('http://www.nodejs.org')
   .pipe(scrim())
   .pipe(cop(function (uri) { return uri + '\n' }))
   .pipe(process.stdout)

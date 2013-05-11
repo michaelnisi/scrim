@@ -1,26 +1,32 @@
 var scrim = require('../index.js')
-  , es = require('event-stream')
+  , Writable = require('stream').Writable
   , fs = require('fs')
   , test = require('tap').test
 
 test('scrape img tags', function (t) {
   var reader = fs.createReadStream('./index.html')
-    , images = scrim()
-  
-  var wanted = [
+    , transformer = scrim()
+    , writer = new Writable()
+
+  var expected = [
     'http://img.jpg'
   , 'http://img.png'
   , 'img.jpg'
   ]
 
+  var actual = []
+
+  writer._write = function (chunk, enc, cb) {
+    actual.push(chunk.toString())
+    cb()
+  }
+
   reader
-    .pipe(images)
-    .on('end', function (data) {
-      // TODO: more?
-    })
-    .pipe(es.writeArray(function (err, array) {
-      t.equal(array.length, wanted.length)
-      t.deepEqual(array, wanted)
+    .pipe(transformer)
+    .pipe(writer)
+    .on('finish', function () {
+      t.equal(actual.length, expected.length)
+      t.deepEqual(actual, expected)
       t.end()
-    }))
+    })
 })

@@ -1,4 +1,4 @@
-# scrim - scrape image URIs from an HTML page
+# scrim - scrape image URIs from HTML page
 
 [![Build Status](https://secure.travis-ci.org/michaelnisi/scrim.png?branch=master)](https://travis-ci.org/michaelnisi/scrim)
 
@@ -8,9 +8,9 @@ A through [Stream](http://nodejs.org/docs/latest/api/stream.html) to scrape imag
     
     var scrim = require('scrim')
       , cop = require('cop')
-      , request = require('request')
+      , hyperquest = require('hyperquest')
 
-    request('http://npmjs.org')
+    hyperquest('http://www.nodejs.org')
       .pipe(scrim())
       .pipe(cop(function (uri) { return uri + '\n' }))
       .pipe(process.stdout)
