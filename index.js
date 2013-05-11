@@ -10,21 +10,9 @@ var trumpet = require('trumpet')
 module.exports = function () {
   var stream = new Transform()
 
-  stream._transform = function (chunk, encoding, callback) {
-    tr.write(chunk)
-    callback()
-  }
-
-  function filter (p) {
-    return p || false
-  }
-
   tr.select('.* img', function (node) {
-    var src = node.attributes.src
-
-    if (filter(src)) {
-      stream.push(src)
-    }
+    var src = node.attributes.src || false
+    if (src) stream.push(src)
   })
 
   // select link to the next page on public Google Reader pages
@@ -32,9 +20,18 @@ module.exports = function () {
     stream.push(node.attributes.href)
   })
 
+  tr.on('error', function (err) {
+    stream.emit('error', err)
+  })
+
   tr.on('end', function () {
     stream.push(null)
   })
+
+  stream._transform = function (chunk, enc, cb) {
+    tr.write(chunk)
+    cb()
+  }
 
   return stream
 }

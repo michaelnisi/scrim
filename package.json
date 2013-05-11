@@ -1,6 +1,6 @@
 {
   "name": "scrim",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "scrape image URIs from HTML page",
   "main": "index.js",
   "directories": {
@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "cop": "0.3.x",
-    "hyperquest": "0.1.x",
     "tap": "0.4.x"
   },
   "scripts": {

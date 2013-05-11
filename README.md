@@ -5,15 +5,17 @@
 A through [Stream](http://nodejs.org/docs/latest/api/stream.html) to scrape image URIs from an HTML page. You pipe an HTML formatted string to it, and it emits image URIs.
 
 ## Usage
-    
-    var scrim = require('scrim')
-      , cop = require('cop')
-      , hyperquest = require('hyperquest')
 
-    hyperquest('http://www.nodejs.org')
-      .pipe(scrim())
-      .pipe(cop(function (uri) { return uri + '\n' }))
-      .pipe(process.stdout)
+    var scrim = require('../index.js')
+      , cop = require('cop')
+      , http  = require('http')
+
+    http.get('http://www.nodejs.org', function (res) {
+      res
+        .pipe(scrim())
+        .pipe(cop(function (uri) { return uri + '\n' }))
+        .pipe(process.stdout)
+    })
 
 ## Installation
 
