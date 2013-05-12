@@ -4,12 +4,12 @@
 var trumpet = require('trumpet')
   , Transform = require('stream').Transform
   , url = require('url')
-  , tr = trumpet()
   , Stream = require('stream').Stream
   , path = require('path')
 
 module.exports = function () {
-  var stream = new Transform()
+  var tr = trumpet()
+    , stream = new Transform()
 
   tr.select('.* img', function (node) {
     var src = node.attributes.src || false
@@ -18,7 +18,7 @@ module.exports = function () {
 
   // select link to the next page on public Google Reader pages
   tr.select('#more a', function (node) {
-    stream.push(node.attributes.href)
+    stream.emit('more', node.attributes.href)
   })
 
   tr.on('error', function (err) {
