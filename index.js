@@ -3,6 +3,7 @@
 
 var trumpet = require('trumpet')
   , Transform = require('stream').Transform
+  , url = require('url')
   , tr = trumpet()
   , Stream = require('stream').Stream
   , path = require('path')
@@ -29,7 +30,7 @@ module.exports = function () {
   })
 
   stream._transform = function (chunk, enc, cb) {
-    tr.write(chunk)
+    tr.write(chunk.toString())
     cb()
   }
 

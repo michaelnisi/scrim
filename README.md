@@ -1,12 +1,12 @@
-# scrim - scrape image URIs from HTML page
+# scrim - scrape image URIs from HTML
 
 [![Build Status](https://secure.travis-ci.org/michaelnisi/scrim.png?branch=master)](https://travis-ci.org/michaelnisi/scrim)
 
-A through [Stream](http://nodejs.org/docs/latest/api/stream.html) to scrape image URIs from an HTML page. You pipe an HTML formatted string to it, and it emits image URIs.
+The `scrim` [Node.js](http://nodejs.org/) module is a [Transform](http://nodejs.org/api/stream.html#stream_class_stream_transform) stream that scrapes image URIs from HTML documents. Pipe an HTML formatted string to it and `scrim` emits image URIs.
 
 ## Usage
 
-    var scrim = require('../index.js')
+    var scrim = require('scrim')
       , cop = require('cop')
       , http  = require('http')
 
@@ -16,6 +16,10 @@ A through [Stream](http://nodejs.org/docs/latest/api/stream.html) to scrape imag
         .pipe(cop(function (uri) { return uri + '\n' }))
         .pipe(process.stdout)
     })
+
+### scrim()
+
+The `scrim` module exports a single function that returns a [Transform](http://nodejs.org/api/stream.html#stream_class_stream_transform) stream.
 
 ## Installation
 
