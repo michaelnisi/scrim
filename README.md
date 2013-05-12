@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/michaelnisi/scrim.png?branch=master)](https://travis-ci.org/michaelnisi/scrim)
 
-The `scrim` [Node.js](http://nodejs.org/) module is a [Transform](http://nodejs.org/api/stream.html#stream_class_stream_transform) stream that scrapes image URIs from HTML documents. Pipe an HTML formatted string to it and `scrim` emits image URIs.
+The `scrim` [Node.js](http://nodejs.org/) module scrapes image URIs from HTML documents. Pipe an HTML formatted string to it, and `scrim` emits image URIs.
 
 ## Usage
 
